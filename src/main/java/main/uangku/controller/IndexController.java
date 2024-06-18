@@ -9,7 +9,16 @@ public class IndexController {
 
     @GetMapping("/home")
     public String home() {
-        return "login";
+        return "index";
     }
 
+    @GetMapping("/income")
+    public String income() {
+        return "income";
+    }
+
+    @GetMapping("/expanse")
+    public String expanse() {
+        return "expanse";
+    }
 }

@@ -18,9 +18,20 @@ public class Income {
     @Column(name = "income", nullable = false)
     private double income;
 
-    @Column(name = "desc", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
+    // Default constructor required by JPA
+    public Income() {
+    }
+
+    // Constructor without ID, for creating new entities
+    public Income(double income, String description) {
+        this.income = income;
+        this.description = description;
+    }
+
+    // Constructor with all parameters
     public Income(Long id, double income, String description) {
         this.id = id;
         this.income = income;
@@ -51,6 +62,13 @@ public class Income {
         this.description = description;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Income{" +
+                "id=" + id +
+                ", income=" + income +
+                ", description='" + description + '\'' +
+                '}';
+    }
 
 }
