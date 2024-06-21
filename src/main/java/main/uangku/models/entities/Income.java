@@ -1,5 +1,7 @@
 package main.uangku.models.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,29 +17,30 @@ public class Income {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "income", nullable = false)
-    private double income;
+    @Column(name = "value", nullable = false)
+    private double value;
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "transactionDate", nullable = false)
+    private Date date;
+
+    @Column(name = "category", nullable = false)
+    private String category;
 
     // Default constructor required by JPA
     public Income() {
     }
 
-    // Constructor without ID, for creating new entities
-    public Income(double income, String description) {
-        this.income = income;
+    public Income(Long id, double value, String description, Date date, String category) {
+        this.id = id;
+        this.value = value;
         this.description = description;
+        this.date = date;
+        this.category = category;
     }
 
-    // Constructor with all parameters
-    public Income(Long id, double income, String description) {
-        this.id = id;
-        this.income = income;
-        this.description = description;
-    }
-    
     public Long getId() {
         return id;
     }
@@ -46,12 +49,12 @@ public class Income {
         this.id = id;
     }
 
-    public double getIncome() {
-        return income;
+    public double getValue() {
+        return value;
     }
 
-    public void setIncome(double income) {
-        this.income = income;
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public String getDescription() {
@@ -62,13 +65,26 @@ public class Income {
         this.description = description;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return "Income{" +
-                "id=" + id +
-                ", income=" + income +
-                ", description='" + description + '\'' +
-                '}';
+        return "Income [id=" + id + ", value=" + value + ", description=" + description + ", date=" + date
+                + ", category=" + category + "]";
     }
 
 }

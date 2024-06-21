@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,14 +40,14 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item active">
                         <a class="sidebar-link" href="/income">
                             <i class="align-middle" data-feather="dollar-sign"></i> <span
                                 class="align-middle">Income</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item active">
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="/expanse">
                             <i class="align-middle" data-feather="trending-down"></i> <span
                                 class="align-middle">Expanse</span>
@@ -71,39 +71,36 @@
 
             <main class="content">
                 <div class="container-fluid p-0">
-                    <h1 class="h3 mb-3"><strong>Expanse</strong></h1>
+                    <h1 class="h3 mb-3"><strong>Pemasukan</strong></h1>
 
                     <div class="col-22 col-lg-22">
                         <div class="card">
-                            <div class="container py-5">
-                                <div class="row mb-4">
-                                    <div class="tab-content">
-                                        <div id="nav-tab-card" class="tab-pane fade show active">
-                                            <form role="form">
-                                                <div class="form-group mb-4">
-                                                    <label for="username">Full name (on the card)</label>
-                                                    <input type="text" name="username" placeholder="Jason Doe" required
-                                                        class="form-control">
-                                                </div>
-                                                <button type="button"
-                                                    class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">
-                                                    Confirm </button>
-                                            </form>
-                                        </div>
-                                        <!-- End -->
+                            <div class="card-body">
+                                <form th:action="@{/home/{id} (id=${income.id})}" th:object="${income}" method="POST">
+                                    <div class="form-group">
+                                        <label for="value">Deposit</label>
+                                        <input type="text" id="value" name="value" th:field="*{value}" class="form-control" placeholder="Deposit" />
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input type="text" id="description" name="description" th:field="*{description}" class="form-control" placeholder="Description" />
+                                    </div>
+                                    <div class="box-footer card-body">
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+            </main>
+
+            <script src="js/app.js"></script>
+
         </div>
-        </main>
-
-        <script src="js/app.js"></script>
-
-    </div>
     </div>
 </body>
 
-</html>
+</html> -->
