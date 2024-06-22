@@ -4,6 +4,9 @@ import java.util.List;
 import main.uangku.models.entities.Income;
 
 public interface ExpanseService{
-    List <Income> getAllIncomeByDate();
-    Income saveIncome(Income income);
+    List <Income> getAllExpanseByDate();
+    String saveExpanse(Income income);
+    public int getTotalExpanse();
+
+    
 } 

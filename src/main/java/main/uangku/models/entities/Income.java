@@ -18,7 +18,7 @@ public class Income {
     private Long id;
 
     @Column(name = "value", nullable = false)
-    private double value;
+    private int value;
 
     @Column(name = "description", nullable = false)
     private String description;
@@ -29,16 +29,17 @@ public class Income {
     @Column(name = "category", nullable = false)
     private String category;
 
-    // Default constructor required by JPA
-    public Income() {
-    }
+    
 
-    public Income(Long id, double value, String description, Date date, String category) {
+    public Income(Long id, int value, String description, Date date, String category) {
         this.id = id;
         this.value = value;
         this.description = description;
         this.date = date;
         this.category = category;
+    }
+
+    public Income() {
     }
 
     public Long getId() {
@@ -49,11 +50,11 @@ public class Income {
         this.id = id;
     }
 
-    public double getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

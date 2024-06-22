@@ -3,7 +3,6 @@ package main.uangku.services.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import main.uangku.models.entities.Income;
@@ -21,7 +20,7 @@ public class IncomeServicesImpl implements IncomeServices {
 
     @Override
     public List<Income> getAllIncomeByDate() {
-        return incomeRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
+        return incomeRepository.getAllIncomeByDate("Income");
     }
 
     @Override
@@ -29,5 +28,23 @@ public class IncomeServicesImpl implements IncomeServices {
         income.setCategory("Income");
         income.setDate(new Date());
         return incomeRepository.save(income);
+    }
+
+    @Override
+    public void deteteTransactionById(Long id) {
+        incomeRepository.deleteById(id);
+    }
+
+    @Override
+    public int getTotalIncome() {
+        int totalIncome  = 0; 
+
+        try {
+            totalIncome = incomeRepository.sumValueByCategory("Income");
+        } catch (Exception e) {
+            System.err.println("Error fetching total income: " + e.getMessage());
+        }
+
+        return totalIncome;
     }
 }
