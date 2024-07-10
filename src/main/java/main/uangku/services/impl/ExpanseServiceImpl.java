@@ -56,4 +56,14 @@ public class ExpanseServiceImpl implements ExpanseService {
         return totalExpanse;
     }
 
+    @Override
+    public Income getExpenseById(Long id) {
+        return expanseRepository.findById(id).get();
+    }
+
+    @Override
+    public Income updateExpense(Income income) {
+        return expanseRepository.save(income);
+    }
+
 }

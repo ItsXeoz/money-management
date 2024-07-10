@@ -11,4 +11,8 @@ public interface IncomeServices {
     void deteteTransactionById(Long id);
 
     public int getTotalIncome();
+
+    Income getIncomeById(Long id);
+    
+    Income updateIncome(Income income);
 }

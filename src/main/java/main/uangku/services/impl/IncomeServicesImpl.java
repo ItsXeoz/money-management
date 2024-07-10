@@ -47,4 +47,14 @@ public class IncomeServicesImpl implements IncomeServices {
 
         return totalIncome;
     }
+
+    @Override
+    public Income getIncomeById(Long id) {
+        return incomeRepository.findById(id).get();        
+    }
+
+    @Override
+    public Income updateIncome(Income income) {
+        return incomeRepository.save(income);
+    }
 }
