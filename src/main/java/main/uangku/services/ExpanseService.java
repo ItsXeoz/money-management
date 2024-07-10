@@ -8,5 +8,6 @@ public interface ExpanseService{
     String saveExpanse(Income income);
     public int getTotalExpanse();
 
-    
+    Income getExpenseById(Long id);
+    Income updateExpense(Income income);
 } 

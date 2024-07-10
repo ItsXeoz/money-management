@@ -177,7 +177,6 @@
                                 </div>
                                 <div class="card-body py-3">
                                     <div class="chart chart-sm">
-                                        <canvas id="chartjs-dashboard-line"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -192,6 +191,7 @@
                                 <table class="table table-hover my-0">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Status</th>
                                             <th>Cash</th>
                                             <th>Description</th>
@@ -199,7 +199,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="income: ${income}">
+                                        <tr th:each="income, iterStat: ${income}">
+                                            <td th:text="${iterStat.index + 1}"></td>
                                             <td>
                                                 <span th:text="${income.category}" th:classappend="${income.category == 'Expanse'} ? 'badge bg-danger' : 'badge bg-success'"></span>
                                             </td>
@@ -223,55 +224,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-            var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-            gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-            gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-            // Line chart
-            new Chart(document.getElementById("chartjs-dashboard-line"), {
-                type: "line",
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                    datasets: [{
-                        label: "Sales ($)",
-                        fill: true,
-                        backgroundColor: gradient,
-                        borderColor: window.theme.primary,
-                        data: [
-                            2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3438, 2917, 3327
-                        ]
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    interaction: {
-                        intersect: false
-                    },
-                    scales: {
-                        x: {
-                            reverse: true,
-                            grid: {
-                                color: "rgba(0,0,0,0.0)"
-                            }
-                        },
-                        y: {
-                            ticks: {
-                                stepSize: 1000
-                            },
-                            display: true,
-                            grid: {
-                                borderDash: [3, 3],
-                                color: "rgba(0,0,0,0.0)"
-                            }
-                        }
-                    }
-                }
-            });
 
             // Rupiah formatting function
             function formatRupiah(amount, prefix) {
